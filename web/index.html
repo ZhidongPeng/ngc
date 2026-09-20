@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="NGC helps young creators turn ideas into real projects.">
+    <title>NGC — NextGen Creators</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="site-header">
+      <a class="brand" href="/" data-link aria-label="NGC home">
+        <span class="brand-mark">N</span>
+        <span class="brand-name">NextGen<br>Creators</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="/programs" data-link>Programs</a>
+        <a href="/showcase" data-link>Showcase</a>
+        <a href="/join" data-link>Join NGC</a>
+        <a href="/about" data-link>About</a>
+      </nav>
+      <div class="header-actions">
+        <a class="support-link" href="/support" data-link>Support NGC</a>
+        <a class="button button-small button-primary" href="/start" data-link>Start a Project <span>↗</span></a>
+      </div>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+        <a href="/" data-link>Home</a>
+        <a href="/programs" data-link>Programs</a>
+        <a href="/showcase" data-link>Showcase</a>
+        <a href="/conversations" data-link>Conversations</a>
+        <a href="/join" data-link>Join NGC</a>
+        <a href="/about" data-link>About</a>
+        <a href="/support" data-link>Support NGC</a>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1"></main>
+    <footer class="site-footer">
+      <div class="footer-lead">
+        <a class="brand brand-light" href="/" data-link>
+          <span class="brand-mark">N</span>
+          <span class="brand-name">NextGen<br>Creators</span>
+        </a>
+        <p>Turn your idea into<br>something real.</p>
+      </div>
+      <div class="footer-links">
+        <div><strong>Explore</strong><a href="/programs" data-link>Programs</a><a href="/showcase" data-link>Showcase</a><a href="/conversations" data-link>Conversations</a></div>
+        <div><strong>Join</strong><a href="/join/creators" data-link>Creators</a><a href="/join/mentors" data-link>Mentors</a><a href="/join/partners" data-link>Partners</a></div>
+        <div><strong>NGC</strong><a href="/about" data-link>About</a><a href="/support" data-link>Support</a><a href="mailto:hello@nextgencreators.org">Contact</a></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 NextGen Creators</span><span>Youth Safety · Privacy · Terms</span><span>California, USA</span></div>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
