@@ -213,10 +213,73 @@ const conversationDetailPage = () => `
   <section class="section"><div class="container"><div class="about-statement"><h2>The questions young creators actually want answered.</h2><div><p>How do you choose between ideas? What should you build first? When should you ask for help? Aisha shares the decisions and mistakes that shaped her first company.</p><a class="text-link" href="/conversations" data-link>Explore more conversations →</a></div></div></div></section>`;
 
 const aboutPage = () => `
-  <section class="page-hero orange"><div class="container"><p class="eyebrow">About NGC</p><h1>Young people shouldn't have to wait to start creating.</h1><p class="lead">NGC exists to help young people turn curiosity and imagination into real-world projects.</p></div></section>
-  <section class="section"><div class="container"><div class="about-statement"><h2>Ideas need more than encouragement.</h2><div><p>Young people often have imagination and energy, but lack structure, team, guidance, resources, and access. NGC exists to close that gap.</p><p><strong>Our vision:</strong> A world where young people don't wait until adulthood to start creating.</p><p><strong>Our mission:</strong> Turn curiosity and ideas into real-world projects through building, mentorship, collaboration, and community.</p></div></div></div></section>
-  <section class="section dark-section"><div class="container"><div class="section-heading"><p class="eyebrow">What we believe</p><h2>Our values show up in the work.</h2></div><div class="values-grid">${["Create Before Credentials","Learn by Building","Stay Curious","Build Together","Share What You Know","Make It Real"].map((v,i) => `<div class="value-card" style="color:var(--ink)"><span>0${i+1}</span><h3>${v}</h3></div>`).join("")}</div></div></section>
-  <section class="section"><div class="container"><div class="about-statement"><h2>Built in Silicon Valley. Connected to the real world.</h2><div><p>NGC uses its proximity to one of the world's most active innovation ecosystems to create access — not exclusivity.</p><h3>We are here to open doors.</h3><p>Youth-led. Creator-driven. Adult-accountable.</p></div></div></div></section>${finalCta()}`;
+  <section class="page-hero about-hero"><div class="container"><p class="eyebrow">About NGC</p>
+    <h1><span>Imagine freely</span><span>Build boldly</span><span>Make it real</span></h1>
+    <div class="about-hero-intro"><p>We believe young people shouldn't have to wait to start creating.</p><p>NGC — Next Generation Creators — is a youth-led community where young people turn ideas into real projects.</p></div>
+    <div class="about-hero-note"><span>Because sometimes all it takes is a place to start — and someone willing to say:</span><strong>“Let's try it.”</strong></div>
+  </div></section>
+
+  <section class="section"><div class="container about-chapter">
+    <div class="about-chapter-label"><span>01</span><p class="eyebrow">Our vision</p></div>
+    <div class="about-chapter-content"><h2>A generation free to imagine, brave enough to create, and ready to shape the future.</h2>
+      <div class="about-columns"><p>We are growing up in a time when the possibilities for creating are bigger than ever. AI and new technologies are making it easier to learn, design, code, experiment, and build.</p><p>But technology is only a tool. <strong>The real beginning is still imagination.</strong> We want young people to think differently, explore what doesn't exist yet, and have the courage to make it real.</p></div>
+      <p class="about-pullquote">We don't just want to prepare for the future.<br><strong>We want to help create it.</strong></p>
+    </div>
+  </div></section>
+
+  <section class="section about-mission"><div class="container about-chapter">
+    <div class="about-chapter-label"><span>02</span><p class="eyebrow">Our mission</p></div>
+    <div class="about-chapter-content"><h2>We help young people turn ideas into something real.</h2>
+      <p class="about-lead">A lot of young people have ideas. The hard part is knowing what to do next. NGC connects young creators with the people and resources that help them move forward.</p>
+      <div class="connection-list">${["Ideas","Teammates","AI & Technology","Mentors","Knowledge","Opportunities"].map(item => `<span>${item}</span>`).join("")}</div>
+      <div class="idea-progress"><div><small>01</small><strong>“I have an idea.”</strong></div><span>→</span><div><small>02</small><strong>“Let's try it.”</strong></div><span>→</span><div><small>03</small><strong>“We made it real.”</strong></div></div>
+      <p class="about-lead">We don't just want young people to learn about innovation. We want them to experience it — to build, test, learn, launch, and see how far an idea can go.</p>
+    </div>
+  </div></section>
+
+  <section class="section dark-section"><div class="container"><div class="section-heading"><p class="eyebrow">Our core values</p><h2>How we create matters.</h2></div>
+    <div class="belief-grid">${[
+      ["01","Stay Curious","Keep asking better questions.","Great ideas often begin with curiosity. Notice what others overlook. Ask why, what could be better, and “What if?” You don't need every answer before you begin."],
+      ["02","Stay True","Build what you believe is worth building.","Listen to feedback. Learn from reality. Change your mind when you need to — but stay connected to what you genuinely care about and why you started."],
+      ["03","Create Together","Different minds make better ideas.","Share what you know. Ask for help. Bring different people, perspectives, technologies, and strengths together. An idea may start with one person; it can grow through many."],
+      ["04","Keep Going","Try. Learn. Change. Try again.","The first idea may be wrong. The first prototype may fail. That's part of creating. Learn from what happens and keep moving forward."]
+    ].map(([n,title,tagline,copy]) => `<article class="belief-card"><span>${n}</span><h3>${title}</h3><strong>${tagline}</strong><p>${copy}</p></article>`).join("")}</div>
+  </div></section>
+
+  <section class="section"><div class="container about-chapter">
+    <div class="about-chapter-label"><span>03</span><p class="eyebrow">Why NGC exists</p></div>
+    <div class="about-chapter-content"><h2>Every day, young people have ideas that never go anywhere.</h2>
+      <p class="about-lead">Not because the ideas aren't good enough. Sometimes there is simply nowhere for them to go.</p>
+      <div class="gap-list">${["No teammate","No mentor","No technical experience","No resources","No one to ask","No place to show the work"].map(item => `<span>${item}</span>`).join("")}</div>
+      <p class="about-pullquote compact">NGC exists to help close that gap.</p>
+      <div class="meeting-list"><p>An idea can meet <strong>another idea.</strong></p><p>A creator can meet <strong>a teammate.</strong></p><p>A student can meet <strong>a founder.</strong></p><p>A prototype can meet <strong>its first user.</strong></p></div>
+    </div>
+  </div></section>
+
+  <section class="section ai-era"><div class="container"><div class="ai-era-grid"><div><p class="eyebrow">Creating in the AI era</p><h2>AI is a tool.<br><span>You are the creator.</span></h2></div><div><p>AI is changing what one young person is capable of doing. It can help us learn, research, code, design, prototype, and experiment faster than ever before.</p><p>But AI should not replace imagination, judgment, curiosity, or human connection. Instead, it gives young creators more freedom to explore what was previously out of reach.</p><div class="question-shift"><small>The question is becoming less</small><s>“Do I know how to build this?”</s><small>and more</small><strong>“What do I want to build?”</strong></div></div></div></div></section>
+
+  <section class="section"><div class="container"><div class="about-statement"><div><p class="eyebrow">Why “Next Generation Creators”?</p><h2>A new way of creating.</h2></div><div><p>“Next Generation” isn't only about age. This generation is growing up with AI, global collaboration, instant access to knowledge, and fewer technical barriers than ever before.</p><p>A creator today doesn't have to fit into one box.</p></div></div>
+    <div class="creator-spectrum">${["Part engineer","Part designer","Part artist","Part storyteller","Part entrepreneur","Something completely new"].map((item,i) => `<span style="--i:${i}">${item}</span>`).join("")}</div>
+    <div class="ngc-definition"><strong>Next Generation Creators.</strong><span>下一代创客。</span></div>
+  </div></section>
+
+  <section class="section youth-led"><div class="container"><div class="youth-led-copy"><p class="eyebrow">Built by young people</p><h2>Not just participants.<br>Builders of the community.</h2><p>Young people can be creators, founders, interviewers, project leaders, teammates, and community builders. They deserve a real voice in conversations about technology, entrepreneurship, creativity, and the future.</p><strong>Not just because the future belongs to us.<br>Because we're already helping build it.</strong></div>
+    <div class="youth-led-roles">${["Creator","Founder","Interviewer","Project Leader","Teammate","Community Builder"].map((role,i) => `<span><small>0${i+1}</small>${role}</span>`).join("")}</div>
+  </div></section>
+
+  <section class="section"><div class="container about-chapter">
+    <div class="about-chapter-label"><span>04</span><p class="eyebrow">Connected to the real world</p></div>
+    <div class="about-chapter-content"><h2>We are here to open doors.</h2><p class="about-lead">NGC is being built in the Silicon Valley innovation ecosystem, surrounded by founders, engineers, startups, universities, companies, mentors, and new technologies.</p>
+      <p class="about-pullquote compact">But being in Silicon Valley isn't the point.<br><strong>Access is.</strong></p>
+      <p class="about-lead">We use that ecosystem to help young creators meet people they normally wouldn't meet, ask questions they normally wouldn't get to ask, and discover opportunities they might not otherwise see.</p>
+    </div>
+  </div></section>
+
+  <section class="section spirit-section"><div class="container"><div class="section-heading"><p class="eyebrow">The spirit of NGC</p><h2>Three ideas guide everything we do.</h2></div>
+    <div class="spirit-grid"><article><span>01</span><h3>Imagine freely.</h3><p>Don't let today's limits define tomorrow's possibilities.</p></article><article><span>02</span><h3>Build boldly.</h3><p>Have the courage to try before you know the answer.</p></article><article><span>03</span><h3>Make it real.</h3><p>Turn imagination into something other people can experience.</p></article></div>
+  </div></section>
+
+  <section class="about-final"><div class="container"><p class="eyebrow">NGC — Next Generation Creators</p><h2>Your idea deserves a chance.</h2><p>Let's see where it can go.</p><a class="button button-light" href="/start" data-link>Start a Project ↗</a></div></section>`;
 
 const formPage = (kind = "project") => {
   const isProject = kind === "project";
