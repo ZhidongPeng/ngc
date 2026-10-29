@@ -299,6 +299,11 @@ h3 { margin: 0; font-size: 26px; }
 .choice label { min-height: 100px; display: flex; align-items: flex-end; padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); font-weight: 600; cursor: pointer; }
 .choice input:checked + label { color: var(--blue); border-color: var(--blue); box-shadow: inset 0 0 0 1px var(--blue); }
 .form-actions { display: flex; justify-content: space-between; margin-top: 38px; }
+.form-notice { margin-top: 24px; color: var(--muted); font-size: 14px; }
+.form-status { margin-top: 16px; }
+.form-status:empty { display: none; }
+.button:disabled { opacity: .6; cursor: wait; transform: none; }
+.button[hidden] { display: none; }
 .success-state { text-align: center; padding: 50px 0; }
 .success-icon { width: 90px; height: 90px; display: grid; place-items: center; margin: 0 auto 30px; border-radius: 50%; background: var(--lime); font-size: 34px; }
 .conversation-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }

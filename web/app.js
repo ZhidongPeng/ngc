@@ -286,23 +286,25 @@ const formPage = (kind = "project") => {
   const titles = isProject ? ["First, tell us who you are.", "Where is your idea right now?", "Tell us a little about it.", "What would help you move forward?"] : ["Tell us who you are.", "Share your experience.", "How would you like to help?", "One last thing."];
   const intro = isProject ? ["What do you want to build?", "You don't need to have everything figured out. Tell us where you are, and we'll help you find the next step."] : ["Share what you know.", "Small commitment. Real impact. Help a young creator move an idea forward."];
   return `<section class="page-hero ${isProject ? "" : "pink"}"><div class="container"><p class="eyebrow">${isProject ? "Start a project" : "Mentor application"}</p><h1>${intro[0]}</h1><p class="lead">${intro[1]}</p></div></section>
-    <section class="section"><div class="container form-shell"><div class="progress"><span id="form-progress" style="width:25%"></span></div><form id="multi-step-form">
+    <section class="section"><div class="container form-shell"><div class="progress"><span id="form-progress" style="width:25%"></span></div><form id="multi-step-form" data-submission-type="${kind}" novalidate>
       <div class="form-step active" data-step="0"><h2>${titles[0]}</h2><p>We use this to understand how best to support you.</p><div class="field-grid"><div class="field"><label for="name">Name</label><input id="name" name="name" required autocomplete="name"></div><div class="field"><label for="email">Email</label><input id="email" type="email" name="email" required autocomplete="email"></div><div class="field"><label for="location">Location</label><input id="location" name="location" placeholder="City, State"></div><div class="field"><label for="school">${isProject ? "Age / Grade" : "Role / Company"}</label><input id="school" name="school"></div></div></div>
       <div class="form-step" data-step="1"><h2>${titles[1]}</h2><p>Choose the option that feels closest.</p><div class="choice-grid">${(isProject?["Just an idea","Researching","Building","Prototype","Launched","Not sure yet"]:["Engineering","Design","Business","Marketing","Research","Other"]).map((x,i) => `<div class="choice"><input type="radio" name="stage" id="stage-${i}" value="${x}" ${i===0?"required":""}><label for="stage-${i}">${x}</label></div>`).join("")}</div></div>
       <div class="form-step" data-step="2"><h2>${titles[2]}</h2><p>Rough thoughts are welcome. You can always refine this later.</p><div class="field"><label for="idea">${isProject ? "What problem or idea are you exploring?" : "What experience would you like to share?"}</label><textarea id="idea" name="idea" required></textarea></div></div>
       <div class="form-step" data-step="3"><h2>${titles[3]}</h2><p>Select all that apply.</p><div class="choice-grid">${(isProject?["Idea Help","Teammates","Mentor","Technical Help","Design","Funding / Sponsor"]:["30-Minute Session","Project Mentor","Product Feedback","Workshop","Office Visit","Demo Day"]).map((x,i) => `<div class="choice"><input type="checkbox" name="help" id="help-${i}" value="${x}"><label for="help-${i}">${x}</label></div>`).join("")}</div></div>
       <div class="form-step success-state" data-step="4"><div class="success-icon">✓</div><h2>${isProject ? "Your idea is officially moving." : "Thanks for sharing what you know."}</h2><p>${isProject ? "We'll review your submission and help you identify a good next step." : "Our team will review your application and be in touch with a next step."}</p><a class="button button-primary" href="${isProject?"/showcase":"/"}" data-link>${isProject?"Explore the Showcase":"Back to NGC"} →</a></div>
-      <div class="form-actions"><button class="button button-outline" id="form-back" type="button" hidden>Back</button><button class="button button-primary" id="form-next" type="button">Continue →</button></div>
+      <p class="form-notice">Your submission will be sent securely to NGC through Formspree for review and follow-up.</p>
+      <p class="form-status" role="status" aria-live="polite"></p>
+      <div class="form-actions"><button class="button button-outline" id="form-back" type="button" hidden>Back</button><button class="button button-primary" id="form-next" type="submit">Continue →</button></div>
     </form></div></section>`;
 };
 
 const partnerPage = () => `
   <section class="page-hero pink"><div class="container"><p class="eyebrow">Partner with NGC</p><h1>Open your world to the next generation.</h1><p class="lead">Give young creators access to real tools, people, problems, and opportunities.</p></div></section>
-  <section class="section"><div class="container form-shell"><form id="simple-form"><div class="field-grid">
-    <div class="field"><label>Organization</label><input required></div><div class="field"><label>Contact name</label><input required></div>
-    <div class="field"><label>Email</label><input type="email" required></div><div class="field"><label>Organization type</label><select><option>Company</option><option>School</option><option>Nonprofit</option><option>Community</option></select></div>
-    <div class="field full"><label>How would you like to partner?</label><textarea required></textarea></div>
-  </div><button class="button button-primary" type="submit">Explore Partnership →</button></form></div></section>`;
+  <section class="section"><div class="container form-shell"><form id="simple-form" data-submission-type="partnership"><div class="field-grid">
+    <div class="field"><label for="organization">Organization</label><input id="organization" name="organization" autocomplete="organization" required></div><div class="field"><label for="contact-name">Contact name</label><input id="contact-name" name="name" autocomplete="name" required></div>
+    <div class="field"><label for="partner-email">Email</label><input id="partner-email" name="email" type="email" autocomplete="email" required></div><div class="field"><label for="organization-type">Organization type</label><select id="organization-type" name="organization_type"><option>Company</option><option>School</option><option>Nonprofit</option><option>Community</option></select></div>
+    <div class="field full"><label for="partnership-message">How would you like to partner?</label><textarea id="partnership-message" name="message" required></textarea></div>
+  </div><p class="form-notice">Your submission will be sent securely to NGC through Formspree for review and follow-up.</p><p class="form-status" role="status" aria-live="polite"></p><button class="button button-primary" type="submit">Explore Partnership →</button></form></div></section>`;
 
 const supportPage = () => `
   <section class="page-hero orange"><div class="container"><p class="eyebrow">Support NGC</p><h1>Help young ideas<br>go further.</h1><p class="lead">Support the people, tools, and opportunities that help young creators turn ideas into reality.</p></div></section>
@@ -361,6 +363,47 @@ function navigate(href) {
   window.location.hash = nextHash;
 }
 
+async function submitForm(form) {
+  if (form.getAttribute("aria-busy") === "true") return false;
+  const status = form.querySelector(".form-status");
+  const endpoint = window.NGC_CONFIG?.formspreeEndpoint;
+  if (!/^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(endpoint || "")) {
+    status.textContent = "Submissions are not configured yet. Please contact hello@nextgencreators.org.";
+    return false;
+  }
+
+  const data = new FormData(form);
+  data.set("submission_type", form.dataset.submissionType);
+  const buttons = [...form.querySelectorAll("button")];
+  const disabledStates = buttons.map(button => button.disabled);
+  form.setAttribute("aria-busy", "true");
+  buttons.forEach(button => { button.disabled = true; });
+  status.textContent = "Sending your submission...";
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 20000);
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" },
+      signal: controller.signal,
+    });
+    if (!response.ok) {
+      throw new Error("Formspree rejected the submission.");
+    }
+    status.textContent = "";
+    return true;
+  } catch (error) {
+    console.error("Form submission failed:", error);
+    status.textContent = "We couldn't confirm your submission. Your entries are still here. Please try again or contact hello@nextgencreators.org. If you retry, a duplicate may be received.";
+    return false;
+  } finally {
+    window.clearTimeout(timeout);
+    form.removeAttribute("aria-busy");
+    buttons.forEach((button, index) => { button.disabled = disabledStates[index]; });
+  }
+}
+
 function bindPageEvents() {
   const search = document.querySelector("#project-search");
   const category = document.querySelector("#category-filter");
@@ -391,23 +434,34 @@ function bindPageEvents() {
       next.hidden = step === 4;
       next.textContent = step === 3 ? "Submit →" : "Continue →";
     };
-    next.addEventListener("click", () => {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (step === 4 || form.getAttribute("aria-busy") === "true") return;
+      form.querySelector(".form-status").textContent = "";
       const active = form.querySelector(".form-step.active");
       const required = [...active.querySelectorAll("[required]")];
       if (!required.every(input => input.checkValidity())) {
         required.find(input => !input.checkValidity())?.reportValidity();
         return;
       }
+      if (step === 3 && !await submitForm(form)) return;
       step += 1;
+      if (step === 4) {
+        form.reset();
+        form.querySelector(".form-notice").hidden = true;
+      }
       update();
     });
     back.addEventListener("click", () => { step -= 1; update(); });
   }
 
-  document.querySelector("#simple-form")?.addEventListener("submit", (event) => {
+  document.querySelector("#simple-form")?.addEventListener("submit", async (event) => {
     event.preventDefault();
+    const form = event.currentTarget;
+    if (!await submitForm(form)) return;
+    form.querySelector(".form-status").textContent = "Thanks — our partnerships team will be in touch.";
     showToast("Thanks — our partnerships team will be in touch.");
-    event.target.reset();
+    form.reset();
   });
 }
 
