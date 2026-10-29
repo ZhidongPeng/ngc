@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Preview NGC website",
+			"type": "process",
+			"command": "node",
+			"options": { "cwd": "${workspaceFolder}" },
+			"args": [
+				"-e",
+				"const http = require(\"node:http\"); const fs = require(\"node:fs\"); const path = require(\"node:path\"); const files = { \"/\": [\"index.html\", \"text/html\"], \"/index.html\": [\"index.html\", \"text/html\"], \"/app.js\": [\"app.js\", \"text/javascript\"], \"/config.js\": [\"config.js\", \"text/javascript\"], \"/styles.css\": [\"styles.css\", \"text/css\"] }; http.createServer((req, res) => { const file = files[new URL(req.url, \"http://127.0.0.1:8080\").pathname]; if (!Array.isArray(file)) { res.writeHead(404); res.end(\"Not found\"); return; } fs.readFile(path.join(process.cwd(), \"web\", file[0]), (err, data) => { if (err) { console.error(err); res.writeHead(500); res.end(\"Unable to read file\"); return; } res.writeHead(200, { \"Content-Type\": file[1] + \"; charset=utf-8\", \"Cache-Control\": \"no-store\" }); res.end(data); }); }).listen(8080, \"127.0.0.1\", () => console.log(\"NGC preview: http://127.0.0.1:8080/#/partner\"));"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}
