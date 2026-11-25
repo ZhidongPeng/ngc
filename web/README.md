@@ -5,6 +5,9 @@ consistent vertical spacing, and subtle dividers. Light sections alternate
 paper and white; video and Conversations use navy with lime accents. Rounded
 cards remain within these bands for grouped content. These section styles are
 scoped to the homepage and do not change other routes.
+On phones, the six-step ticker fits in a single compact row. Closing
+call-to-action buttons stack with a 14px gap; on desktop they sit side by side
+with the same gap.
 
 # Homepage video
 

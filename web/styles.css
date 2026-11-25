@@ -246,6 +246,7 @@ h3 { margin: 0; font-size: 26px; }
 .node:nth-child(8) { top: 26%; left: 2%; }
 .final-cta { padding: 120px 24px; text-align: center; color: var(--white); background: var(--blue); }
 .final-cta h2 { max-width: 900px; margin: 0 auto 36px; }
+.final-cta > div { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
 .page-hero { padding: 180px 0 90px; background: #dce6ff; }
 .page-hero h1 { max-width: 1020px; font-size: clamp(52px, 7vw, 96px); }
 .page-hero .lead { max-width: 670px; margin: 28px 0 0; color: #46516b; font-size: 20px; }
@@ -460,7 +461,8 @@ h3 { margin: 0; font-size: 26px; }
   .hero-intro p { font-size: 17px; }
   .hero-buttons { flex-direction: column; align-items: stretch; }
   .hero-note { margin-top: 35px; }
-  .ticker-track { justify-content: flex-start; gap: 45px; padding-left: 20px; }
+  .ticker { font-size: clamp(11px, 3vw, 13px); letter-spacing: 0; }
+  .ticker-track { min-width: 0; justify-content: space-between; gap: 0; padding: 0 8px; }
   .ngc-video-feature { grid-template-columns: 1fr; gap: 32px; }
   .ngc-video-player { max-width: 300px; justify-self: center; }
   .journey { grid-template-columns: 1fr; border-top: 0; }
@@ -481,6 +483,7 @@ h3 { margin: 0; font-size: 26px; }
   .role-card { min-height: 300px; }
   .ecosystem-map { min-height: 420px; transform: scale(.85); margin: -30px; }
   .final-cta { padding: 85px 18px; }
+  .final-cta > div { flex-direction: column; align-items: stretch; max-width: 380px; margin: 0 auto; }
   .page-hero { padding: 135px 0 70px; }
   .about-hero { min-height: 760px; padding-bottom: 45px; }
   .about-hero h1 { font-size: clamp(46px, 14vw, 66px); }
