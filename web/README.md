@@ -13,10 +13,14 @@ support pause, seeking, volume, and fullscreen; it never autoplays and plays
 inline on mobile. The hero's "Watch NGC Stories" link scrolls to the player.
 The full-width navy-and-lime section pairs the heading with an uncropped portrait
 video on desktop and stacks them on mobile.
-A paper-colored video background and lavender border keep the player distinct
-from the navy section before the first frame loads.
+The video's first frame appears as a poster on initial load. Only the poster
+loads initially; the video loads when the visitor presses play. A paper-colored
+fallback background and lavender border keep the player distinct from the navy
+section while the poster loads.
 
-Deploy [IMG_7595.mp4](./IMG_7595.mp4) alongside the page. The MP4 is an
+Deploy [IMG_7595.mp4](./IMG_7595.mp4) and
+[IMG_7595-poster.jpg](./IMG_7595-poster.jpg) alongside the page. Regenerate the
+poster from the first frame whenever the video changes. The MP4 is an
 H.264/AAC copy of the original HEVC [IMG_7595.MOV](./IMG_7595.MOV) for broader
 browser compatibility. The original is kept as the source for conversion;
 there is no download link on the page. Playback failures display an error

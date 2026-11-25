@@ -116,7 +116,7 @@ const homePage = () => `
   <section class="section dark-section" id="ngc-video" aria-labelledby="ngc-video-title"><div class="container ngc-video-feature">
     <div class="ngc-video-copy"><p class="eyebrow">NGC Stories</p><h2 id="ngc-video-title">See NGC <span>in action.</span></h2></div>
     <div class="ngc-video-player">
-      <video class="home-video" controls playsinline preload="metadata" aria-label="NGC in action" src="./IMG_7595.mp4">
+      <video class="home-video" controls playsinline preload="none" poster="./IMG_7595-poster.jpg" aria-label="NGC in action" src="./IMG_7595.mp4">
         Your browser does not support embedded video. Please try another browser.
       </video>
       <p id="ngc-video-error" role="alert" hidden>This video could not be played. Please refresh the page or try another browser.</p>
