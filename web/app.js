@@ -108,17 +108,26 @@ const homePage = () => `
     <div class="hero-content"><p class="eyebrow">NextGen Creators</p><h1>Turn your idea into something real.</h1>
       <div class="hero-intro"><div><p>NGC is a youth-led creator ecosystem where young people build real projects and connect with people who can help them go further.</p>
         <div class="hero-buttons"><a class="button button-primary" href="/start" data-link>Start a Project ↗</a><a class="button button-outline" href="/showcase" data-link>Explore Showcase</a></div></div>
-        <a class="text-link" href="#creator" data-scroll="creator">Watch NGC Stories →</a></div>
+        <a class="text-link" href="#ngc-video" data-scroll="ngc-video">Watch NGC Stories →</a></div>
       <div class="hero-note"><span class="pulse"></span> Built by young creators. For the next generation of creators.</div>
     </div>
   </section>
   <div class="ticker"><div class="ticker-track"><span>Idea</span><span>→ Team</span><span>→ Build</span><span>→ Fund</span><span>→ Launch</span><span>→ Grow</span></div></div>
+  <section class="section dark-section" id="ngc-video" aria-labelledby="ngc-video-title"><div class="container ngc-video-feature">
+    <div class="ngc-video-copy"><p class="eyebrow">NGC Stories</p><h2 id="ngc-video-title">See NGC <span>in action.</span></h2></div>
+    <div class="ngc-video-player">
+      <video class="home-video" controls playsinline preload="metadata" aria-label="NGC in action" src="./IMG_7595.mp4">
+        Your browser does not support embedded video. Please try another browser.
+      </video>
+      <p id="ngc-video-error" role="alert" hidden>This video could not be played. Please refresh the page or try another browser.</p>
+    </div>
+  </div></section>
   <section class="section"><div class="container"><div class="section-heading"><p class="eyebrow">How NGC works</p><h2>From idea to launch.</h2><p>You don't need a company. You don't need experience. You just need somewhere to start.</p></div>
     <div class="journey">${[
       ["01", "Idea", "Find something worth exploring."], ["02", "Team", "Meet people who want to build."], ["03", "Build", "Make a real prototype."],
       ["04", "Fund", "Find resources and support."], ["05", "Launch", "Put it into the real world."], ["06", "Grow", "Learn, improve, keep moving."]
     ].map(([n,t,p]) => `<div class="journey-step"><span>${n}</span><h3>${t}</h3><p>${p}</p></div>`).join("")}</div></div></section>
-  <section class="section" style="padding-top:20px"><div class="container"><div class="section-heading"><p class="eyebrow">Programs</p><h2>Start wherever you are.</h2><p>Whether you have a rough idea or a working prototype, NGC helps you move to the next step.</p></div>${labCards()}</div></section>
+  <section class="section"><div class="container"><div class="section-heading"><p class="eyebrow">Programs</p><h2>Start wherever you are.</h2><p>Whether you have a rough idea or a working prototype, NGC helps you move to the next step.</p></div>${labCards()}</div></section>
   <section class="section" id="creator"><div class="container"><div class="section-heading"><p class="eyebrow">Creator Spotlight</p><h2>Meet the creators.</h2><p>Young people aren't waiting to become creators. They're already building.</p></div>
     <div class="creator-feature"><div class="creator-image"><button class="play" type="button" data-toast="Creator story preview">▶</button></div><div class="creator-copy"><p class="eyebrow">Maya / Orbit Aid</p>
       <blockquote>“I didn't start because I knew how to build it. I started because I couldn't stop thinking about the problem.”</blockquote>
@@ -345,6 +354,7 @@ function render() {
   else if (path.startsWith("/conversations/")) page = conversationDetailPage();
   else page = homePage();
   document.querySelector("#main").innerHTML = page;
+  document.querySelector("#main").classList.toggle("home-page", path === "/");
   document.title = `${path === "/" ? "NGC" : path.split("/").filter(Boolean).pop().replaceAll("-", " ")} — NextGen Creators`;
   document.body.classList.remove("menu-open");
   document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
@@ -405,6 +415,10 @@ async function submitForm(form) {
 }
 
 function bindPageEvents() {
+  document.querySelector(".home-video")?.addEventListener("error", () => {
+    document.querySelector("#ngc-video-error").hidden = false;
+  });
+
   const search = document.querySelector("#project-search");
   const category = document.querySelector("#category-filter");
   const stage = document.querySelector("#stage-filter");

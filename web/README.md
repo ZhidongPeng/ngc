@@ -1,3 +1,34 @@
+# Homepage layout
+
+Homepage sections use full-width background bands, shared content alignment,
+consistent vertical spacing, and subtle dividers. Light sections alternate
+paper and white; video and Conversations use navy with lime accents. Rounded
+cards remain within these bands for grouped content. These section styles are
+scoped to the homepage and do not change other routes.
+
+# Homepage video
+
+The homepage includes a click-to-play video below the hero. Its native controls
+support pause, seeking, volume, and fullscreen; it never autoplays and plays
+inline on mobile. The hero's "Watch NGC Stories" link scrolls to the player.
+The full-width navy-and-lime section pairs the heading with an uncropped portrait
+video on desktop and stacks them on mobile.
+A paper-colored video background and lavender border keep the player distinct
+from the navy section before the first frame loads.
+
+Deploy [IMG_7595.mp4](./IMG_7595.mp4) alongside the page. The MP4 is an
+H.264/AAC copy of the original HEVC [IMG_7595.MOV](./IMG_7595.MOV) for broader
+browser compatibility. The original is kept as the source for conversion;
+there is no download link on the page. Playback failures display an error
+message. Serve the MP4 as `video/mp4` and support byte-range requests for
+efficient streaming and seeking.
+
+To regenerate the web copy on macOS after replacing the original:
+
+```sh
+avconvert --source IMG_7595.MOV --preset Preset1920x1080 --output IMG_7595.mp4 --replace
+```
+
 # Form submissions
 
 The partnership, project, and mentor forms submit to Formspree. No backend
