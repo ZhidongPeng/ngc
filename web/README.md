@@ -2,17 +2,20 @@
 
 Homepage sections use full-width background bands, shared content alignment,
 consistent vertical spacing, and subtle dividers. Light sections alternate
-paper and white; video and Conversations use navy with lime accents. Rounded
+paper and white; the hero and Conversations use dark backgrounds with lime accents. Rounded
 cards remain within these bands for grouped content. These section styles are
 scoped to the homepage and do not change other routes.
 
 # Homepage video
 
-The homepage includes a click-to-play video below the hero. Its native controls
+The homepage includes a click-to-play video inside the hero. Its native controls
 support pause, seeking, volume, and fullscreen; it never autoplays and plays
 inline on mobile. The hero's "Watch NGC Stories" link scrolls to the player.
-The full-width navy-and-lime section pairs the heading with an uncropped portrait
-video on desktop and stacks them on mobile.
+The hero pairs the headline and project buttons on the left with an uncropped
+portrait video on the right. On mobile, the headline and buttons appear first,
+followed by the video. There is no separate video section below the hero.
+The hero uses a navy gradient instead of a background photo to keep the
+portrait video and headline visually cohesive.
 The video's first frame appears as a poster on initial load. Only the poster
 loads initially; the video loads when the visitor presses play. A paper-colored
 fallback background and lavender border keep the player distinct from the navy
